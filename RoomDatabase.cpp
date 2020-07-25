@@ -5,6 +5,13 @@ using namespace std;
 //Initialize pointer to zero so that it can be initialized in first call to getInstance
 RoomDatabase* RoomDatabase::instance = 0;
 
+RoomDatabase* RoomDatabase::getInstance()
+{
+	if (!instance)
+		instance = new RoomDatabase;
+	return instance;
+}
+
 void RoomDatabase::addRoom(const Room& new_room)
 {
 	for (int i = 0;i < rooms.size();i++)
@@ -23,4 +30,12 @@ void RoomDatabase::addRoom(const Room& new_room)
 void RoomDatabase::sortByBeds()
 {
 	sort(rooms.begin(), rooms.end(), [](const Room& room1, const Room& room2) {return room1.getBedCount() < room2.getBedCount();});
+}
+
+void RoomDatabase::displayAllRooms() const
+{
+	for (int i = 0;i < rooms.size();i++)
+	{
+		rooms[i].displayRoom();
+	}
 }

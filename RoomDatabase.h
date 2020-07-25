@@ -17,11 +17,8 @@ private:
 	}
 
 public:
-	static RoomDatabase* getInstance() {
-		if (!instance)
-			instance = new RoomDatabase;
-		return instance;
-	}
+	static RoomDatabase* getInstance();
 	void addRoom(const Room& new_room);
 	void sortByBeds();
+	void displayAllRooms()const;
 };
